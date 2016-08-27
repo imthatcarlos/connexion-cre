@@ -1,0 +1,22 @@
+default: &default
+  host: localhost
+  adapter: postgresql
+  encoding: utf8
+  pool: 5
+  username: postgres
+  password:
+  timeout: 5000
+
+development:
+  <<: *default
+  database: connexion_development
+
+test:
+  <<: *default
+  database: connexion_test
+
+production:
+  <<: *default
+  database: connexion_production
+  username: connexion
+  password: <%= ENV['DATABASE_PASSWORD'] %>
