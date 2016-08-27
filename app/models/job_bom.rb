@@ -1,8 +1,18 @@
 class JobBom < ApplicationRecord
   self.table_name = "job_bom"
+  self.inheritance_column = nil
 
-  has_many :projects, foreign_key: :job_id, class_name: "JobProject"
+  has_many :fixtures, foreign_key: :bom_fk, class_name: "JobFixture"
+  belongs_to :project, foreign_key: :job_id, class_name: "JobProject"
 end
+
+# There can be multiple BOM's tied to a job during quoting phase. Once a job is awarded
+# only one BOM can be selected with it's id put in the job_project.awardedschedule_id field.
+#
+# active_schedule = will also be set to true if it is the awarded schedule
+#
+# You can use the id field to link to the job_fixture table to get the detail information of what
+# items make up the bom cost and sell.
 
 # == Schema Information
 #
