@@ -4,6 +4,7 @@ class JobBom < ApplicationRecord
 
   has_many :fixtures, foreign_key: :bom_fk, class_name: "JobFixture"
   belongs_to :project, foreign_key: :job_id, class_name: "JobProject"
+  belongs_to :ledger, foreign_key: :job_id, primary_key: :job_id, class_name: "JobLedger"
 end
 
 # There can be multiple BOM's tied to a job during quoting phase. Once a job is awarded

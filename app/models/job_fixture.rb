@@ -2,6 +2,8 @@ class JobFixture < ApplicationRecord
   self.table_name = "job_fixture"
   self.primary_key = "fixture_id"
 
+  has_one :component, foreign_key: :fixture_fk, class_name: "JobComponent"
+
   belongs_to :bom, foreign_key: :bom_fk, class_name: "JobBom"
   belongs_to :cost, foreign_key: :vendor_item_fk, class_name: "JobCost"
   belongs_to :quote, foreign_key: :custom_item_fk, class_name: "JobQuote"
