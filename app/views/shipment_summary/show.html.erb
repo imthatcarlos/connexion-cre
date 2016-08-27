@@ -1,0 +1,61 @@
+<h2 class="right"><a href="<%= @cut_booklet_link %>">Cut booklet</a></h2>
+
+<div class="logo">
+  <img src="images/logo.png">
+</div>
+<h1>Shipment Summary</h1>
+
+<div class="col-md-6 text-center">
+  <h2>Customer PO# <%= @customer_po %></h2>
+</div>
+
+<div class="col-md-6 text-center">
+  <h2><%= @project_manager_info %></h2>
+</div>
+
+<h2><%= @project_name %> | <%= @contact_info %> <%= @additional_contacts %></h2>
+
+<%= will_paginate @rows, renderer: BootstrapPagination::Rails %>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <td>Type</td>
+        <td>Vendor</td>
+        <td>Description</td>
+        <td>Order QTY</td>
+        <td>Status</td>
+        <td>QTY</td>
+        <td>Est Ship Date</td>
+        <td>Actual Ship Date</td>
+        <td>Shipper</td>
+        <td>On hold</td>
+        <td>External Notes</td>
+        <td>Submittal Status</td>
+        <td>Cut sheet</td>
+        <td>Installation</td>
+      </tr>
+    </thead>
+    <tbody>
+      <% @rows.each do |r| %>
+        <tr>
+          <td><%= r[:type] %></td>
+          <td><%= r[:vendor] %></td>
+          <td><%= r[:description] %></td>
+          <td><%= r[:order_qty] %></td>
+          <td><span class="<%= r[:status_class]%>"><%= r[:status] %></span></td>
+          <td><%= r[:qty] %> </td>
+          <td><span class="<%= r[:est_ship_date_class] %>"><%= r[:est_ship_date] %></span></td>
+          <td><span class="<%= r[:act_ship_date_class] %>"><%= r[:act_ship_date] %></span></td>
+          <td><%= r[:shipper] %></td>
+          <td><%= r[:on_hold] %></td>
+          <td><%= r[:external_notes] %></td>
+          <td><%= r[:submittal_staus] %></td>
+          <td><a href="<%= r[:cut_sheet_link] %>">Link</a></td>
+          <td><a href="<%= r[:installation_link] %>">Link</a></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+<% end %>
