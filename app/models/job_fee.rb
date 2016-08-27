@@ -1,5 +1,5 @@
 class JobFee < ApplicationRecord
-  has_one :bom, foreign_key: :bom_id, class_name: "JobBom"
+  belongs_to :bom, foreign_key: :bom_id, class_name: "JobBom"
 end
 
 # == Schema Information

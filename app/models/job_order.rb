@@ -1,5 +1,7 @@
 class JobOrder < ApplicationRecord
   self.table_name = "job_order"
+
+  belongs_to :vendor, foreign_key: :vendor_id, class_name: 'JobVendor'
 end
 
 # == Schema Information
