@@ -20,6 +20,9 @@ gem 'turbolinks',                       '~> 5'
 gem 'jbuilder',                         '~> 2.5'
 gem "will_paginate-bootstrap"
 gem "sidekiq",                          "3.4.2"
+gem "bootstrap-sass",                  "~> 3.3"
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

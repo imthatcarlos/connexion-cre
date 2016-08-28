@@ -1,5 +1,9 @@
 class JobProject < ApplicationRecord
   self.table_name = "job_project"
+
+  def location 
+    "#{city}, #{state}" if city.present? && state.present?
+  end 
 end
 
 # == Schema Information

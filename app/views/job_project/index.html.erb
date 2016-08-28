@@ -1,13 +1,10 @@
 <h1>Projects</h1>
 
-<%= will_paginate @projects, renderer: BootstrapPagination::Rails %>
-
-<table class="table">
+<table class="table table-striped">
   <thead>
     <tr>
       <td>Name</td>
       <td>Location</td>
-      <td>Type</td>
       <td>Status</td>
       <td></td>
     </tr>
@@ -17,9 +14,8 @@
       <tr>
         <td><%= p.name %></td>
         <td><%= p.location %></td>
-        <td><%= p.type %></td>
         <td><%= p.status %></td>
-        <td><%= link_to "Shipment Summary", shipment_summary_path(p.id) %></td>
+        <td><%= link_to "Shipment Summary", shipment_summary_path(project_id: p.id) %></td>
       </tr>
     <% end %>
   </tbody>

@@ -3,5 +3,8 @@ Rails.application.routes.draw do
 
   root to: "job_project#index"
 
-  get "shipment_summary/:project_id", to: "shipment_summary#show"
+  get "shipment_summary", to: "shipment_summary#show"
+  
+  get "export_csv",       to: "export#csv"
+  get "export_pdf",       to: "export#pdf"
 end

@@ -1,0 +1,53 @@
+.centered-page-md {
+  padding: 0 30px 0 30px;
+}
+
+.navbar-header {
+  height: 50px;
+  margin-bottom: 30px;
+}
+
+.logo {
+  float:left;
+}
+
+.logo img {
+  width: 70%;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.right {
+  float: right;
+  padding-right: 20px;
+}
+
+table, th, td {
+   border: 1px solid black;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+.info {
+  font-weight: bold;
+  width: 200px;
+  height: 50px;
+  margin-right: 10px;
+}
+
+.info-block {
+  width: 100%;
+  margin: auto;
+}
+
+.inline {
+  display: inline-block;
+}
+
+.text-center {
+  text-align:center;
+}
