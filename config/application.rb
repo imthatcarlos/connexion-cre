@@ -16,5 +16,9 @@ module Connexion2
     config.active_record.time_zone_aware_types = [:datetime]
     
     config.active_record.schema_format = :sql
+
+    # Auto-load bots and its subdirectories
+    config.paths.add File.join('app', 'bots'), glob: File.join('**', '*.rb')
+    config.autoload_paths += Dir[Rails.root.join('app', 'bots', '*')]
   end
 end

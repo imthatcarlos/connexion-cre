@@ -9,4 +9,8 @@ Rails.application.routes.draw do
   get "export_pdf",       to: "export#pdf"
 
   resources :cut_sheets, only: [:index, :create], path: 'cutsheets'
+  get "trends",           to: "trends#show"
+  get "trends/data",      to: "trends#data"
+
+  mount Facebook::Messenger::Server, at: 'bot'
 end

@@ -51,6 +51,7 @@ GEM
       sass (>= 3.3.4)
     builder (3.2.2)
     byebug (9.0.5)
+    c3-rails (0.4.10)
     capybara (2.8.1)
       addressable
       mime-types (>= 1.16)
@@ -76,11 +77,16 @@ GEM
       unicode_utils (~> 1.4)
     erubis (2.7.0)
     execjs (2.7.0)
+    facebook-messenger (0.9.0)
+      httparty (~> 0.13, >= 0.13.7)
+      rack (>= 1.6.4)
     ffi (1.9.14)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
     hirb (0.7.3)
     hitimes (1.2.4)
+    httparty (0.14.0)
+      multi_xml (>= 0.5.2)
     i18n (0.7.0)
     jazz_fingers (4.0.1)
       awesome_print (~> 1.6)
@@ -111,6 +117,7 @@ GEM
     mini_portile2 (2.1.0)
     minitest (5.9.0)
     multi_json (1.12.1)
+    multi_xml (0.5.5)
     nio4r (1.2.1)
     nokogiri (1.6.8)
       mini_portile2 (~> 2.1.0)
@@ -221,8 +228,10 @@ PLATFORMS
 DEPENDENCIES
   annotate
   bootstrap-sass (~> 3.3)
+  c3-rails (= 0.4.10)
   capybara
   coffee-rails (~> 4.2)
+  facebook-messenger
   jazz_fingers
   jbuilder (~> 2.5)
   jquery-rails
