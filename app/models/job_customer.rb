@@ -1,9 +1,35 @@
 class JobCustomer < ApplicationRecord
   self.table_name = "job_customer"
 
-  has_many :projects, foreign_key: :job_id, class_name: "JobProject"
-  has_one :address, foreign_key: :address_fk, class_name: "JobAddress"
+  belongs_to :projects, foreign_key: :job_id, class_name: "JobProject"
+  belongs_to :address, foreign_key: :address_fk, class_name: "JobAddress"
+  belongs_to :main_contact, foreign_key: :main_contact_fk, class_name: "JobContact"
+  belongs_to :shipping_address, foreign_key: :shipaddress_fk, class_name: "JobAddress"
+  belongs_to :alt_address, foreign_key: :altaddress_fk, class_name: "JobAddress"
 end
+
+# ECLIPSE
+# actor_id = Eclipse Customer ID
+# ship_to = Eclipse Customer ID of Ship To Customer
+# shipping_instr = Eclipse default Shipping Instructions for Customer
+# credit_br = Eclipse Bill-To Branch Customer Default
+# sales_source = Eclipse Default Sales Source for accounting
+# ship_from_br = Eclipse Ship From Branch Default
+# inside_sales = Eclipse Customer Inside Salesperson
+# outside_sales = Eclipse Customer Outside Salesman
+# freight_in_exempt = Freight In Exempt setting from Eclipse
+# dflt_vfrt_terms = Eclipse Default Vendor Freight Terms
+# dflt_cfrt_terms = Eclipse Default Customer Freight Terms
+# tax_exempt_number = Eclipse Tax Exempt Number
+
+# MISC
+# id = system assigned id number and key to table
+# override_address = if user overrides address on info summary screen
+# address_fk = pointer to job_address for all of the address information
+# main_contact_fk = pointer to job_contact table to get contact information
+# shipaddress_fk = pointer to job_address for the shipping address.
+# awarded_date = Date the Customer was awarded the job
+# altaddress_fk = Alternate address information
 
 # == Schema Information
 #

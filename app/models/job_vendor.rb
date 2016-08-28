@@ -1,6 +1,32 @@
 class JobVendor < ApplicationRecord
   self.table_name = "job_vendor"
+
+  has_many :costs, foreign_key: :vendor_id, primary_key: :actor_id, class_name: "JobCost"
+
+  belongs_to :address, foreign_key: :address_fk, class_name: "JobAddress"
+  belongs_to :ship_address, foreign_key: :shipaddress_fk, class_name: "JobAddress"
+  belongs_to :project, foreign_key: :job_id, class_name: "JobProject"
 end
+
+# ECLIPSE
+# actor_id = Eclipse Vendor ID
+# freight_terms = Eclipse default Freight Terms
+# vendor_short_name = Eclipse Vendor Short Name
+# shipping_instr = Eclipse Default Shipping Instruction for Vendor
+# ship_via = Eclipse Default Ship Via
+# ship_from_br = Eclipse Ship From Branch Default
+# ship_from = Eclipse Ship From Vendor for this Pay To Vendor
+# payment_terms = Eclipse Vendor Payment Terms
+
+# MISC
+# id = system assigned id number and key to table
+# rep = will be vendor id of rep, and is only set if the vendor is associated with the rep on the
+# Job Management Maintenance Screen.
+# next_po = internal Job Management number use to determine the next sequential PO
+# Number.
+# address_fk = key to address table for the address of this vendor
+# shipaddress_fk = key to address table for the ship to vendor
+# vendor_type = type of vendor as set up in the Job Management maintenance screen.
 
 # == Schema Information
 #

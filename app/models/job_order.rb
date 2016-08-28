@@ -1,5 +1,7 @@
 class JobOrder < ApplicationRecord
   self.table_name = "job_order"
+
+  has_one :change_item, foreign_key: :order_fk, class_name: "JobChangeItem"
 end
 
 # == Schema Information
