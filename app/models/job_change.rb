@@ -38,7 +38,5 @@ end
 #
 # Foreign Keys
 #
-#  fk848f36727dab9cd6  (address_id => job_address.id)
-#  fk848f367288edfc14  (document_fk => job_document_log.document_name)
 #  fk848f3672d938bf24  (customer_fk => job_cust_change.id)
 #

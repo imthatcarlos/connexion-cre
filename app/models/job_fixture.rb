@@ -73,16 +73,3 @@ end
 #  vendor_pricing_vendor :integer          not null
 #  customer_po           :string(255)
 #
-# Indexes
-#
-#  job_fixture_bom_fk_index            (bom_fk)
-#  job_fixture_customer_item_fk_index  (customer_item_fk)
-#  job_fixture_vendor_item_fk_index    (vendor_item_fk)
-#
-# Foreign Keys
-#
-#  fkaf062f87700f8171  (total_id => job_totals.id)
-#  fkaf062f87895b1b09  (bom_fk => job_bom.id)
-#  fkaf062f87937633a1  (customer_item_fk => job_quote.id)
-#  fkaf062f87f51528e1  (vendor_item_fk => job_cost.id)
-#

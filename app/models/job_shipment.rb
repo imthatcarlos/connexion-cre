@@ -30,8 +30,3 @@ end
 #  job_shipment_component_fk_index  (component_fk)
 #  job_shipment_fixture_fk_index    (fixture_fk)
 #
-# Foreign Keys
-#
-#  fk2973ebdc724bd8e4  (fixture_fk => job_fixture.fixture_id)
-#  fk2973ebdcc82bfc64  (component_fk => job_component.fixture_id)
-#

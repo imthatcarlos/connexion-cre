@@ -48,10 +48,3 @@ end
 #  job_component_fixture_fk_index        (fixture_fk)
 #  job_component_vendor_item_fk_index    (vendor_item_fk)
 #
-# Foreign Keys
-#
-#  fk6ba3eafb700f8171  (total_id => job_totals.id)
-#  fk6ba3eafb724bd8e4  (fixture_fk => job_fixture.fixture_id)
-#  fk6ba3eafb937633a1  (customer_item_fk => job_quote.id)
-#  fk6ba3eafbf51528e1  (vendor_item_fk => job_cost.id)
-#

@@ -51,8 +51,5 @@ end
 #
 # Foreign Keys
 #
-#  fkea7734c06485c84c  (transaction_fkey => job_transaction_log.id)
-#  fkea7734c0724bd8e4  (fixture_fk => job_fixture.fixture_id)
 #  fkea7734c09323e436  (order_fk => job_change.id)
-#  fkea7734c0c82bfc64  (component_fk => job_component.fixture_id)
 #

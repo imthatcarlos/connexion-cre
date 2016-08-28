@@ -40,6 +40,5 @@ end
 #
 #  fk5789044c36056b6   (vendorquote_id => job_vendor.id)
 #  fk5789044c7dab9cd6  (address_id => job_address.id)
-#  fk5789044c88edfc14  (document_fk => job_document_log.document_name)
 #  fk5789044c895b1b5f  (bom_id => job_bom.id) ON DELETE => cascade
 #

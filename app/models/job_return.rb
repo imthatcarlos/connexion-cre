@@ -29,8 +29,3 @@ end
 #  batch_id           :string(255)
 #  external_date      :date
 #
-# Foreign Keys
-#
-#  fk9e065ff27dab9cd6  (address_id => job_address.id)
-#  fk9e065ff288edfc14  (document_fk => job_document_log.document_name)
-#

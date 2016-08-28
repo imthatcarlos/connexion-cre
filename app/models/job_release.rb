@@ -34,5 +34,4 @@ end
 # Foreign Keys
 #
 #  fk224d5d857dab9cd6  (address_id => job_address.id)
-#  fk224d5d8588edfc14  (document_fk => job_document_log.document_name)
 #

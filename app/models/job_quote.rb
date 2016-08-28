@@ -8,7 +8,7 @@ end
 #
 # Table name: job_quote
 #
-#  id                    :integer          not null, primary key
+#  id                    :integer          not null
 #  price                 :decimal(19, 3)
 #  extended_price        :decimal(19, 2)
 #  margin                :decimal(19, 6)
