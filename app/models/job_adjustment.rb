@@ -1,7 +1,7 @@
 class JobAdjustment < ApplicationRecord
   self.table_name = "job_adjustment"
 
-  
+  belongs_to :bom, foreign_key: :bom_id, class_name: 'JobBom'
 end
 
 # == Schema Information

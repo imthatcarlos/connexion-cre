@@ -1,10 +1,34 @@
 class JobProject < ApplicationRecord
   self.table_name = "job_project"
 
+  has_many :quoted_boms, foreign_key: :job_id, class_name: 'JobBom'
+  belongs_to :bom, foreign_key: :awardedschedule_id, primary_key: :id, class_name: 'JobBom'
+
+  def job_number
+    "#{job_cat.first(2)}-#{serialized_bid_date}-#{id}"
+  end
+
   def location 
     "#{city}, #{state}" if city.present? && state.present?
   end 
+
+  def serialized_bid_date
+    return 'MISSING_BID_DATE' unless bid_date_time
+    bid_date_time.strftime('%m%e%y')
+  end
 end
+
+# ECLIPSE
+# bidder = Eclipse Writer
+# inside_sales = Eclipse Inside Salesman for awarded Customer
+# outside_sales = Eclipse Outside Salesman for awarded Customer
+# credit_br = Eclipse Billing Branch Number
+# ship_from_br = Eclipse Shipping Branch Number
+
+# MISC
+# id = job number which is the last number following dash in example above this is 437
+# Note: The full job number is the First two letters of the job_cat followed by a dash
+# followed by the bid date in the format mmddyy followed by a dash followed by id.
 
 # == Schema Information
 #

@@ -1,8 +1,8 @@
 class JobFeeChange < ApplicationRecord
   self.table_name = "job_fee_change"
-  has_one :bom, foreign_key: :bom_id, class_name: "JobBom"
-  has_one :customer_change, foreign_key: :custoemrchange_id, class_name: "JobCustChange"
-  has_one :fee, foreign_key: :fee_id, class_name: "JobFee"
+  belongs_to :bom, foreign_key: :bom_id, class_name: "JobBom"
+  belongs_to :customer_change, foreign_key: :custoemrchange_id, class_name: "JobCustChange"
+  belongs_to :fee, foreign_key: :fee_id, class_name: "JobFee"
 end
 
 # == Schema Information
