@@ -10,18 +10,18 @@
   </div>
 </div>
 
-<h3 class="right"><a href="<%= @cut_booklet_link %>">Cut booklet</a></h3>
+<h4 class="right"><a href="<%= @project.cut_booklet_url %>" target="_blank">Cut booklet</a></h4>
 <h1>Shipment Summary</h1>
 
 <div class="col-md-6 text-center">
-  <h3>Customer PO# <%= @customer_po %></h3>
+  <h3>Customer PO# <%= @project.customer_po %></h3>
 </div>
 
 <div class="col-md-6 text-center">
-  <h3><%= @project_manager_info %></h3>
+  <h3><%= @project.manager_info %></h3>
 </div>
 
-<h3><%= @project_name %> | <%= @contact_info %> <%= @additional_contacts %></h3>
+<h3><%= @project.name %> | <%= @project.contact_info %></h3>
 
 <table class="table table-striped">
   <thead>
@@ -29,36 +29,38 @@
       <td>Type</td>
       <td>Vendor</td>
       <td>Description</td>
-      <td>Order QTY</td>
-      <td>Status</td>
-      <td>QTY</td>
+      
+      <td>Quantity</td>
       <td>Est Ship Date</td>
       <td>Actual Ship Date</td>
       <td>Shipper</td>
-      <td>On hold</td>
-      <td>External Notes</td>
-      <td>Submittal Status</td>
-      <td>Cut sheet</td>
-      <td>Installation</td>
+      <td>Tracking No.</td>
     </tr>
   </thead>
   <tbody>
-    <% @rows.each do |r| %>
+    <% @fixtures.each do |f| %>
       <tr>
-        <td><%= r[:type] %></td>
-        <td><%= r[:vendor] %></td>
-        <td><%= r[:description] %></td>
-        <td><%= r[:order_qty] %></td>
-        <td><span class="<%= r[:status_class]%>"><%= r[:status] %></span></td>
-        <td><%= r[:qty] %> </td>
-        <td><span class="<%= r[:est_ship_date_class] %>"><%= r[:est_ship_date] %></span></td>
-        <td><span class="<%= r[:act_ship_date_class] %>"><%= r[:act_ship_date] %></span></td>
-        <td><%= r[:shipper] %></td>
-        <td><%= r[:on_hold] %></td>
-        <td><%= r[:external_notes] %></td>
-        <td><%= r[:submittal_staus] %></td>
-        <td><a href="<%= r[:cut_sheet_link] %>">Link</a></td>
-        <td><a href="<%= r[:installation_link] %>">Link</a></td>
+        <td><%= f.fixture_type.presence || "N/A"  %></td>
+        <td><%= f.vendor_name %></td>
+        <td><%= f.description %></td>
+        <td><%= f.quantity %></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+
+      <tr>
+        <% f.shipments.each do |s| %>
+          <td></td>
+          <td></td>
+          <td>Shipment</td>
+          <td><%= s.quantity %></td>
+          <td><%= s.shipment_date %></td>
+          <td><%= s.ship_date %></td>
+          <td><%= s.shipper %></td>
+          <td><%= s.tracking_number %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

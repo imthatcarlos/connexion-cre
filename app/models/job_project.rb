@@ -18,6 +18,22 @@ class JobProject < ApplicationRecord
     return 'MISSING_BID_DATE' unless bid_date_time
     bid_date_time.strftime('%m%e%y')
   end
+
+  def cut_booklet_url
+    "http://google.com"
+  end
+
+  def customer_po
+    "PO-9000"
+  end
+
+  def manager_info
+    "#{project_manager}, 773-111-1111, pm@gmail.com"
+  end
+
+  def contact_info
+    "Reri, 773-222-2222, reri@gmail.com"
+  end
 end
 
 # ECLIPSE
