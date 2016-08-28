@@ -24,6 +24,7 @@ gem "bootstrap-sass",                  "~> 3.3"
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
 
+gem 'selenium-webdriver'
 gem 'capybara'
 
 group :development, :test do
