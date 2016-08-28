@@ -7,4 +7,8 @@ Rails.application.routes.draw do
   
   get "export_csv",       to: "export#csv"
   get "export_pdf",       to: "export#pdf"
+  get "trends",           to: "trends#show"
+  get "trends/data",      to: "trends#data"
+
+  mount Facebook::Messenger::Server, at: 'bot'
 end

@@ -13,4 +13,11 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require_tree .
+//= require d3
+//= require c3
+
+var chartColors = ["#E08283","#2ABB9B","#96281B","#E74C3C","#E67E22","#019875","#D2D7D3","#2C3E50","#EEEEEE","#BF55EC","#1E8BC3","#F2784B","#DADFE1","#EF4836","#4ECDC4","#F22613"];
+
+$(document).ready(function() {
+  
+});

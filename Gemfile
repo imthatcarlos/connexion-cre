@@ -23,6 +23,8 @@ gem "sidekiq",                          "3.4.2"
 gem "bootstrap-sass",                  "~> 3.3"
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
+gem "c3-rails",                         "0.4.10"
+gem "facebook-messenger"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -2,6 +2,10 @@ class JobShipment < ApplicationRecord
   self.table_name =  "job_shipment"
 
   belongs_to :fixture, foreign_key: :fixture_fk, class_name: "JobFixture"
+
+  def summary 
+    "---- Shipment - Quantity: #{quantity}, Est. ship date: #{shipment_date}, Actual: #{ship_date}, Tracking# #{tracking_number}"
+  end
 end
 
 # == Schema Information

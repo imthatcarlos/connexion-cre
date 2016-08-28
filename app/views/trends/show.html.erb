@@ -1,0 +1,86 @@
+<div id="data-toggle" class="btn-group btn-group-sm pull-right">
+  <button class="btn btn-light active" id="current">Current</button>
+  <button class="btn btn-light" id="past">Past</button>
+</div>
+
+<div id="trends-chart" style="height:60vh">
+  <div class="chart-placeholder text-center"><i class="fa fa-spin fa-spinner"></i></div>
+</div>
+
+<script type="text/javascript">
+  var dataUrl = "/trends/data?quarter=current"
+  var prev_object = $('#current');
+
+  $.getJSON(dataUrl, function(resp) {
+
+    var groups = Object.keys(resp);
+    delete(groups[groups.indexOf("date")]);
+
+    barChart = c3.generate({
+      bindto: '#trends-chart',
+      data: {
+        x: 'date',
+        json: resp,
+        type:'area-spline',
+        groups: [groups]
+      },
+      size: {
+        height: 400
+      },
+      bar: {
+        zerobased: true
+      },
+      axis: {
+        x: {
+          label: {
+            // text: 'Month',
+            // position: 'outer-center'
+          },
+          type: 'timeseries',
+          tick: {
+            format: '%B %y'
+          }
+        },
+        y: {
+          padding: {
+            bottom: 0
+          },
+          label: {
+            text: 'USD',
+            position: 'outer-center'
+          }
+        }
+      },
+      legend: {
+        position: 'bottom',
+        show: false
+      },
+      color: {
+        pattern: chartColors
+      }
+    });
+  });
+
+  $('#data-toggle button').on('click', function() {
+
+    if(!$(this).hasClass('active')) {
+      $(this).toggleClass('active');
+      prev_object.toggleClass('active');
+      prev_object = $(this);
+
+      var dataURL = "/trends/data?quarter=" + $(this).attr("id");
+
+      $.getJSON(dataURL, function(resp) {
+        var groups = Object.keys(resp);
+        delete(groups[groups.indexOf("date")]);
+
+        barChart.load({
+          unload: true,
+          json: resp,
+          groups: [ groups ]
+        });
+      });
+    }
+  });
+
+</script>
