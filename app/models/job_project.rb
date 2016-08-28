@@ -4,6 +4,8 @@ class JobProject < ApplicationRecord
   has_many :quoted_boms, foreign_key: :job_id, class_name: 'JobBom'
   belongs_to :bom, foreign_key: :awardedschedule_id, primary_key: :id, class_name: 'JobBom'
 
+  scope :awarded, -> { where.not(awardedcustomer_id: nil) }
+
   def job_number
     "#{job_cat.first(2)}-#{serialized_bid_date}-#{id}"
   end

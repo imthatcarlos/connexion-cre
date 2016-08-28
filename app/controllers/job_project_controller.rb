@@ -1,6 +1,6 @@
 class JobProjectController < ApplicationController 
   def index 
-    @projects = JobProject.first(25)
+    @projects = JobProject.awarded.sample(25)
   end
 
   def show

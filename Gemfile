@@ -26,7 +26,7 @@ gem 'wkhtmltopdf-binary'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platform: :mri
+  gem 'byebug', platform: :mri 
 end
 
 group :development do
@@ -34,6 +34,7 @@ group :development do
   gem 'web-console'
   gem 'listen', '~> 3.0.5'
   gem 'annotate'
+  gem "pry"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

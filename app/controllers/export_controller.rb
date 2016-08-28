@@ -6,6 +6,7 @@ class ExportController < ApplicationController
     project_id      = params[:project_id]
     @customer_po    = params[:customer_po]
     
+    # probs get these from project
     @address        = "Some address"
     @contact_email  = "some@email.com"
     @contact_name   = "some name"

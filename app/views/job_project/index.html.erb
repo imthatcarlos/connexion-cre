@@ -15,7 +15,7 @@
         <td><%= p.name %></td>
         <td><%= p.location %></td>
         <td><%= p.status %></td>
-        <td><%= link_to "Shipment Summary", shipment_summary_path(project_id: p.id) %></td>
+        <td><%= link_to "Shipment Summary", shipment_summary_path(project_id: p.id, bom_id: p.bom.id) %></td>
       </tr>
     <% end %>
   </tbody>
