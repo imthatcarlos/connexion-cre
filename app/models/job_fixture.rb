@@ -11,6 +11,19 @@ class JobFixture < ApplicationRecord
   belongs_to :quote, foreign_key: :custom_item_fk, class_name: "JobQuote"
   belongs_to :total, foreign_key: :total_id, class_name: "JobTotal"
 
+  def to_csv
+    arr = [
+      fixture_type.presence || "N/A",
+      vendor_name,
+      description,
+      quantity,
+      nil,
+      nil,
+      nil,
+      nil
+    ]
+  end
+
   def vendor_name
     case cost.vendor_id
     when 0

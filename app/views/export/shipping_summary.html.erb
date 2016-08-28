@@ -6,25 +6,25 @@
 
 <br><br>
 
-<h2 class="text-center bold">Shipment Status.....</h2>
+<h2 class="text-center bold">Shipment Status</h2>
 
 <div class="inline info-block">
   <div class="info inline">
-    <p>Address <%= @address %></p>
+    <p>Address: <%= "2012 W Highstreet Road" %></p>
   </div>
 
   <div class="info inline">
-    <p>Customer PO #<%= @customer_po %></p>
+    <p>Customer PO #<%= @project.customer_po %></p>
   </div>
 
   <div class="info inline">
-    <p>Contact <%= @contact_name %></p>
-    <p>E-mail <%= @contact_email %></p>
+    <p>Contact: <%= @project.contact_info.split(",")[0] %></p>
+    <p>E-mail: <%= @project.contact_info.split(",")[2] %></p>
   </div>
 
   <div class="info inline">
-    <p>Phone <%= @phone %></p>
-    <p>Fax# <%= @fax %></p>
+    <p>Phone: <%= @project.contact_info.split(",")[1] %></p>
+    <p>Fax: <%= @fax %></p>
   </div>
 </div>
 
@@ -36,38 +36,39 @@
       <td>Type</td>
       <td>Vendor</td>
       <td>Description</td>
-      <td>Order QTY</td>
-      <td>Status</td>
-      <td>QTY</td>
+      
+      <td>Quantity</td>
       <td>Est Ship Date</td>
-      <td>Req'd Ship Date</td>
       <td>Actual Ship Date</td>
       <td>Shipper</td>
-      <td>On hold</td>
-      <td>External Notes</td>
-      <td>Submittal Status</td>
-      <td>Cut sheet</td>
-      <td>Installation</td>
+      <td>Tracking No.</td>
     </tr>
   </thead>
   <tbody>
-    <% @rows.each do |r| %>
+    <% @fixtures.each do |f| %>
       <tr>
-        <td><%= r[:type] %></td>
-        <td><%= r[:vendor] %></td>
-        <td><%= r[:description] %></td>
-        <td><%= r[:order_qty] %></td>
-        <td><span class="<%= r[:status_class]%>"><%= r[:status] %></span></td>
-        <td><%= r[:qty] %> </td>
-        <td><span class="<%= r[:est_ship_date_class] %>"><%= r[:est_ship_date] %></span></td>
-        <td><span class="<%= r[:act_ship_date_class] %>"><%= r[:act_ship_date] %></span></td>
-        <td><%= r[:shipper] %></td>
-        <td><%= r[:on_hold] %></td>
-        <td><%= r[:external_notes] %></td>
-        <td><%= r[:submittal_staus] %></td>
-        <td><a href="<%= r[:cut_sheet_link] %>">Link</a></td>
-        <td><a href="<%= r[:installation_link] %>">Link</a></td>
+        <td><%= f.fixture_type.presence || "N/A"  %></td>
+        <td><%= f.vendor_name %></td>
+        <td><%= f.description %></td>
+        <td><%= f.quantity %></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
       </tr>
+
+      <% f.shipments.each do |s| %>
+        <tr>
+          <td></td>
+          <td></td>
+          <td>Shipment</td>
+          <td><%= s.quantity %></td>
+          <td><%= s.shipment_date %></td>
+          <td><%= s.ship_date %></td>
+          <td><%= s.shipper %></td>
+          <td><%= s.tracking_number %></td>
+        </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>

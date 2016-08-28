@@ -3,17 +3,8 @@ require 'csv'
 class ExportController < ApplicationController
 
   def email
-    project_id      = params[:project_id]
-    @customer_po    = params[:customer_po]
-    
-    # probs get these from project
-    @address        = "Some address"
-    @contact_email  = "some@email.com"
-    @contact_name   = "some name"
-    @phone          = "44444444"
-    @fax            = "fax"
-
-    @rows = []
+    @project = JobProject.find(params[:project_id])
+    @fixtures = @project.bom.fixtures
 
     pdf = render_to_string pdf: "shipping-summary-customer-po-#{customer_po}", 
                           template: "views/export/shipping_summary",
@@ -36,34 +27,31 @@ class ExportController < ApplicationController
   end
   
   def csv
-    customer_po = params[:customer_po]
-    project_id  = params[:project_id]
+    project = JobProject.find(params[:project_id])
+    fixtures = project.bom.fixtures
 
     result = CSV.generate do |csv|
       csv << csv_header
-      records = []
-      records.each { |r| csv << r }
+      fixtures.each_with_object(csv) { |f, obj| 
+        obj << f.to_csv 
+        f.shipments.each_with_object(obj) { |s, obj2| 
+          obj2 << [ nil, nil, "shipment", s.quantity, s.shipment_date, s.ship_date, s.shipper, s.tracking_number ] 
+        }
+      }
     end
 
     send_data(result, {
-      filename:    "shipping-summary-customer-po-#{customer_po}.csv",
+      filename:    "shipping-summary-customer-po-{project.customer_po}.csv",
       type:        "text/csv",
       disposition: "attachment"
     })
   end
 
   def pdf
-    project_id      = params[:project_id]
-    @customer_po    = params[:customer_po]
-    @address        = "Some address"
-    @contact_email  = "some@email.com"
-    @contact_name   = "some name"
-    @phone          = "44444444"
-    @fax            = "fax"
+    @project  = JobProject.find(params[:project_id])
+    @fixtures = @project.bom.fixtures
 
-    @rows = []
-
-    render pdf:              'shipping-summary-customer-po-#{@customer_po}',
+    render pdf:              'shipping-summary-customer-po-{@project.customer_po}',
            disposition:      'attachment',
            template:         'export/shipping_summary',
            orientation:      'Landscape',
@@ -76,22 +64,11 @@ class ExportController < ApplicationController
       "Type",
       "Vendor",
       "Description",
-      "Order QTY",
-      "Status",
-      "QTY",
-      "Est",
-      "Ship",
-      "Date",
-      "Actual",
-      "Ship",
-      "Date",
+      "Quantity",
+      "Est Ship Date",
+      "Actual Ship Date",
       "Shipper",
-      "On Hold",
-      "External",
-      "Notes",
-      "Submittal Status",
-      "Cut Sheet",
-      "Installation"
+      "Tracking No."
     ]
   end
 end
