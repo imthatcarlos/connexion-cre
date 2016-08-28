@@ -1,0 +1,64 @@
+<div>
+  <div class="col-md-6">
+    <%= link_to root_path, class: "btn btn-primary btn-sm" do %>
+     <i class="fa fa-arrow-left fa-lg" aria-hidden="true"></i>
+    <% end %>
+  </div>
+  <div class="col-md-6">
+    <%= link_to "Export CSV", export_csv_path(customer_po: @project.customer_po, project_id: @project.id), class: "btn btn-primary btn-md right", id: "export_csv" %>
+    <%= link_to "Export PDF", export_pdf_path(customer_po: @project.customer_po, project_id: @project.id), class: "btn btn-primary btn-md right", id: "export_pdf" %>
+  </div>
+</div>
+
+<h4 class="right"><a href="<%= @project.cut_booklet_url %>" target="_blank">Cut booklet</a></h4>
+<h1>Shipment Summary</h1>
+
+<div class="col-md-6 text-center">
+  <h3>Customer PO# <%= @project.customer_po %></h3>
+</div>
+
+<div class="col-md-6 text-center">
+  <h3><%= @project.manager_info %></h3>
+</div>
+
+<h3><%= @project.name %> | <%= @project.contact_info %></h3>
+
+<table class="table table-striped table-bordered table-condensed">
+  <thead>
+    <th>Type</th>
+    <th>Vendor</th>
+    <th>Description</th>
+    <th>Quantity</th>
+    <th>Est Ship Date</th>
+    <th>Actual Ship Date</th>
+    <th>Shipper</th>
+    <th>Tracking No.</th>
+  </thead>
+  <tbody>
+    <% @fixtures.each do |f| %>
+      <tr>
+        <td><%= f.fixture_type.presence || "N/A"  %></td>
+        <td><%= f.vendor_name %></td>
+        <td><%= f.description %></td>
+        <td><%= f.quantity %></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+
+      <% f.shipments.each do |s| %>
+        <tr>
+          <td></td>
+          <td></td>
+          <td>Shipment</td>
+          <td><%= s.quantity %></td>
+          <td><%= s.shipment_date %></td>
+          <td><%= s.ship_date %></td>
+          <td><%= s.shipper %></td>
+          <td><%= s.tracking_number %></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>

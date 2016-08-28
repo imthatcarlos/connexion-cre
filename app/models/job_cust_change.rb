@@ -33,7 +33,3 @@ end
 #  processing_status :integer
 #  freight_in_exempt :boolean
 #
-# Foreign Keys
-#
-#  fk84285d9a88edfc14  (document_fk => job_document_log.document_name)
-#

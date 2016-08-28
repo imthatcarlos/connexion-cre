@@ -13,7 +13,3 @@ end
 #  contact_method :string(255)
 #  address_fk     :integer
 #
-# Foreign Keys
-#
-#  fk1a03599e7dab9c80  (address_fk => job_address.id) ON DELETE => cascade
-#

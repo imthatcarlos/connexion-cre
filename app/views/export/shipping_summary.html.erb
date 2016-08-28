@@ -1,0 +1,74 @@
+<%= wicked_pdf_stylesheet_link_tag "pdf" %>
+
+<div class="logo">
+  <%= image_tag wicked_pdf_asset_base64('logo.png') %>
+</div>
+
+<br><br>
+
+<h2 class="text-center bold">Shipment Status</h2>
+
+<div class="inline info-block">
+  <div class="info inline">
+    <p>Address: <%= "2012 W Highstreet Road" %></p>
+  </div>
+
+  <div class="info inline">
+    <p>Customer PO #<%= @project.customer_po %></p>
+  </div>
+
+  <div class="info inline">
+    <p>Contact: <%= @project.contact_info.split(",")[0] %></p>
+    <p>E-mail: <%= @project.contact_info.split(",")[2] %></p>
+  </div>
+
+  <div class="info inline">
+    <p>Phone: <%= @project.contact_info.split(",")[1] %></p>
+    <p>Fax: <%= @fax %></p>
+  </div>
+</div>
+
+<br><br>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <td>Type</td>
+      <td>Vendor</td>
+      <td>Description</td>
+      
+      <td>Quantity</td>
+      <td>Est Ship Date</td>
+      <td>Actual Ship Date</td>
+      <td>Shipper</td>
+      <td>Tracking No.</td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @fixtures.each do |f| %>
+      <tr>
+        <td><%= f.fixture_type.presence || "N/A"  %></td>
+        <td><%= f.vendor_name %></td>
+        <td><%= f.description %></td>
+        <td><%= f.quantity %></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+
+      <% f.shipments.each do |s| %>
+        <tr>
+          <td></td>
+          <td></td>
+          <td>Shipment</td>
+          <td><%= s.quantity %></td>
+          <td><%= s.shipment_date %></td>
+          <td><%= s.ship_date %></td>
+          <td><%= s.shipper %></td>
+          <td><%= s.tracking_number %></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>

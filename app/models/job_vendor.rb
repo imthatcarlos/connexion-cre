@@ -58,7 +58,5 @@ end
 #
 # Foreign Keys
 #
-#  fka4d6c80a2572dbbc  (shipaddress_fk => job_address.id)
-#  fka4d6c80a7dab9c80  (address_fk => job_address.id) ON DELETE => cascade
 #  fka4d6c80ad6b513aa  (job_id => job_project.id)
 #

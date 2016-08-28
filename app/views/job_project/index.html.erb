@@ -1,0 +1,22 @@
+<h1>Projects</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <td>Name</td>
+      <td>Location</td>
+      <td>Status</td>
+      <td></td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @projects.each do |p| %>
+      <tr>
+        <td><%= p.name %></td>
+        <td><%= p.location %></td>
+        <td><%= p.status %></td>
+        <td><%= link_to "Shipment Summary", shipment_summary_path(project_id: p.id, bom_id: p.bom.id) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
