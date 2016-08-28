@@ -1,6 +1,8 @@
 class JobVendor < ApplicationRecord
   self.table_name = "job_vendor"
 
+  has_many :costs, foreign_key: :vendor_id, primary_key: :actor_id, class_name: "JobCost"
+
   belongs_to :address, foreign_key: :address_fk, class_name: "JobAddress"
   belongs_to :ship_address, foreign_key: :shipaddress_fk, class_name: "JobAddress"
   belongs_to :project, foreign_key: :job_id, class_name: "JobProject"
